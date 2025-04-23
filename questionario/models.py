@@ -34,7 +34,7 @@ class RespostaModulo(models.Model):
 
 
 class Dimensao(models.Model):
-    TIPO_CHOICES = [
+    TIPO = [
         ('OBRIGATORIO', 'Obrigatório'),
         ('COMERCIO', 'Comércio'),
         ('SERVICO', 'Serviço'),
@@ -44,7 +44,7 @@ class Dimensao(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=255, unique=True)
     descricao = models.TextField()
-    tipo = models.CharField(max_length=20, choices=TIPO_CHOICES)
+    tipo = models.CharField(max_length=20, choices=TIPO)
     modulo = models.ForeignKey(
         Modulo, on_delete=models.CASCADE, related_name='dimensoes')
 

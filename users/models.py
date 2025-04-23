@@ -41,7 +41,6 @@ class UserAccountManager(BaseUserManager):
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     nomeDeUsuario = models.CharField(max_length=255, unique=True)
     email = models.EmailField(max_length=255, unique=True)
-    cnpj = BRCNPJField(max_length=14, unique=True)
     cpf = models.CharField(max_length=14, unique=True, default="00000000000")
     password = models.CharField(max_length=255)
     isActive = models.BooleanField(default=True)
@@ -54,7 +53,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     objects = UserAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nomeDeUsuario', 'cnpj', 'cpf']
+    REQUIRED_FIELDS = ['nomeDeUsuario', 'cpf']
 
     def __str__(self):
         return self.email
